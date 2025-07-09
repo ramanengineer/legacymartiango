@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="X vs. O Mega Tic-Tac-Toe - A strategic game where 9 Tic-Tac-Toe grids form an ultimate battle.">
-  <meta name="keywords" content="tic-tac-toe, Mega tic-tac-toe, X, O, game">
+  <meta name="description" content="LegacyMartian vs. Alien Mega Tic-Tac-Toe - A strategic game where 9 Tic-Tac-Toe grids form an ultimate battle.">
+  <meta name="keywords" content="tic-tac-toe, Mega tic-tac-toe, LegacyMartian, Alien, game">
   <meta name="author" content="xAI">
-  <meta property="og:title" content="X vs. O Mega Tic-Tac-Toe">
-  <meta property="og:description" content="Play Mega Tic-Tac-Toe, where X battles O across 9 grids to claim victory.">
+  <meta property="og:title" content="LegacyMartian vs. Alien Mega Tic-Tac-Toe">
+  <meta property="og:description" content="Play Mega Tic-Tac-Toe, where LegacyMartian battles Alien across 9 grids to claim victory.">
   <meta property="og:image" content="https://i.postimg.cc/cCvYBzLS/ogvk-org-logo.png">
   <meta property="og:url" content="https://Megatictactoe.xai">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <title>X vs. O Mega Tic-Tac-Toe</title>
+  <title>LegacyMartian vs. Alien Mega Tic-Tac-Toe</title>
   <link rel="icon" href="https://i.postimg.cc/cCvYBzLS/ogvk-org-logo.png" type="image/png">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
@@ -124,6 +124,7 @@
     }
 
     .nes-btn.is-primary { background: var(--home-btn); }
+    .nes-btn.is-error { background: #ff4d4d; }
 
     @keyframes buttonPress {
       0% { transform: scale(1); box-shadow: 0 8px 30px rgba(255, 255, 255, 0.3); }
@@ -168,10 +169,10 @@
       background: rgba(79, 155, 255, 0.2);
     }
 
-    .cell.X { color: #ff4d4d; } /* X Red */
-    .cell.O { color: #2dd4bf; } /* O Teal */
-    .grid.won-X .cell { background: rgba(255, 77, 77, 0.2); }
-    .grid.won-O .cell { background: rgba(45, 212, 191, 0.2); }
+    .cell.LegacyMartian { color: #ff4d4d; } /* LegacyMartian Red */
+    .cell.Alien { color: #2dd4bf; } /* Alien Teal */
+    .grid.won-LegacyMartian .cell { background: rgba(255, 77, 77, 0.2); }
+    .grid.won-Alien .cell { background: rgba(45, 212, 191, 0.2); }
     .grid.active {
       border: 3px solid var(--clr-1);
       box-shadow: 0 0 15px var(--clr-1), 0 0 30px var(--clr-1);
@@ -228,11 +229,12 @@
     </div>
 
     <div class="nes-container">
-      <h2>X vs. O</h2>
+      <h2>LegacyMartian vs. Alien</h2>
       <div id="game-container"></div>
-      <div id="status">X's Turn<br>Choose any grid to start</div>
+      <div id="status">LegacyMartian's Turn<br>Choose any grid to start</div>
       <div class="text-center mt-8">
         <button class="nes-btn is-primary" id="reset"><i class="fas fa-redo"></i> Reset Game</button>
+        <button class="nes-btn is-error" id="resign"><i class="fas fa-flag"></i> Resign</button>
       </div>
     </div>
 
@@ -245,7 +247,8 @@
     const container = document.getElementById('game-container');
     const status = document.getElementById('status');
     const resetButton = document.getElementById('reset');
-    let currentPlayer = 'X';
+    const resignButton = document.getElementById('resign');
+    let currentPlayer = 'LegacyMartian';
     let gameActive = true;
     let activeGrid = null; // Null means any grid is playable
     const grids = Array(9).fill().map(() => ({
@@ -311,7 +314,7 @@
       // Update cell
       grids[gridIndex].cells[cellIndex] = currentPlayer;
       const cell = container.children[gridIndex].children[cellIndex];
-      cell.textContent = currentPlayer;
+      cell.textContent = currentPlayer === 'LegacyMartian' ? 'L' : 'A';
       cell.classList.add(currentPlayer);
 
       // Check for grid win
@@ -338,9 +341,18 @@
       }
 
       // Update game state
-      currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+      currentPlayer = currentPlayer === 'LegacyMartian' ? 'Alien' : 'LegacyMartian';
       activeGrid = grids[cellIndex].winner ? null : cellIndex;
       updateStatus();
+      updateActiveGrid();
+    }
+
+    // Handle resign
+    function resignGame() {
+      if (!gameActive) return;
+      const winner = currentPlayer === 'LegacyMartian' ? 'Alien' : 'LegacyMartian';
+      status.innerHTML = `${currentPlayer} Resigned! ${winner} Wins!`;
+      gameActive = false;
       updateActiveGrid();
     }
 
@@ -374,7 +386,7 @@
         grid.winner = null;
       });
       metaBoard.fill(null);
-      currentPlayer = Math.random() < 0.5 ? 'X' : 'O';
+      currentPlayer = Math.random() < 0.5 ? 'LegacyMartian' : 'Alien';
       gameActive = true;
       activeGrid = null;
       initBoard();
@@ -382,6 +394,7 @@
 
     // Event listeners
     resetButton.addEventListener('click', resetGame);
+    resignButton.addEventListener('click', resignGame);
 
     // Start game
     initBoard();

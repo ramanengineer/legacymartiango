@@ -3,31 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Legacy: Martian vs. Alien - A unique Go variant set on Mars where Martians and Aliens place stones anywhere, captures affect scores, and the first to 20 points or a full board wins.">
-  <meta name="keywords" content="go, game, Martian, Alien, Legacy, strategy game">
-  <meta name="author" content="OGVK Company">
-  <meta property="og:title" content="Legacy: Martian vs. Alien">
-  <meta property="og:description" content="Play Legacy: Martian vs. Alien, a creative Go variant where Martians and Aliens place stones anywhere, captures affect scores, and the first to 20 points or a full board wins.">
-  <meta property="og:image" content="https://i.postimg.cc/cCvYBzLS/ogvk-org-logo.png">
-  <meta property="og:url" content="https://legacygo.ogvk.company">
+  <meta name="description" content="X vs. O Mega Tic-Tac-Toe - A strategic game where 9 Tic-Tac-Toe grids form an ultimate battle.">
+  <meta name="keywords" content="tic-tac-toe, Mega tic-tac-toe, X, O, game">
+  <meta name="author" content="xAI">
+  <meta property="og:title" content="X vs. O Mega Tic-Tac-Toe">
+  <meta property="og:description" content="Play Mega Tic-Tac-Toe, where X battles O across 9 grids to claim victory.">
+  <meta property="og:image" content="https://i.postimg.cc/RVJQckjV/shadychess.png">
+  <meta property="og:url" content="https://Megatictactoe.xai">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <title>Legacy: Martian vs. Alien</title>
-  <link rel="icon" href="https://i.postimg.cc/cCvYBzLS/ogvk-org-logo.png" type="image/png">
+  <title>X vs. O Mega Tic-Tac-Toe</title>
+  <link rel="icon" href="https://i.postimg.cc/RVJQckjV/shadychess.png" type="image/png">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-bg: #2b0a0a; /* Deep Martian red */
-      --secondary-bg: #1a2f1a; /* Dark Alien green */
-      --accent: #ff5722; /* Vibrant Martian orange */
-      --text: #f5f5f5; /* Off-white for readability */
-      --btn-bg: #ff5722; /* Button background */
-      --btn-hover: #ff7043; /* Button hover */
-      --board-bg: #a0522d; /* Rich wood-like board */
-      --grid-line: #333333; /* Softer grid lines */
-      --blur: 1rem;
-      --fs: clamp(3rem, 8vw, 6rem);
+      --primary-bg: #0a1123;
+      --secondary-bg: #1a263a;
+      --accent: #4f9bff;
+      --text: #f5f7fa;
+      --btn-light-text: #ffffff;
+      --home-tab: #4f9bff;
+      --home-bg: rgba(79, 155, 255, 0.05);
+      --home-btn: #4f9bff;
+      --clr-1: #4f9bff;
+      --clr-2: #2dd4bf;
+      --clr-3: #ffab40;
+      --clr-4: #f472b6;
+      --blur: 1.5rem;
+      --fs: clamp(1.8rem, 4vw, 2.5rem);
       --ls: clamp(-1px, -0.2vw, -2px);
     }
 
@@ -38,47 +42,45 @@
     }
 
     body {
-      background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
+      background: linear-gradient(145deg, var(--primary-bg), #0c162d);
       color: var(--text);
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       margin: 0;
-      padding: 30px 15px;
+      padding: 20px 10px;
       min-height: 100vh;
       overflow-x: hidden;
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-      color: var(--accent);
-      transition: color 0.3s ease;
-    }
-
-    a:hover {
-      color: var(--btn-hover);
+      line-height: 1.7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .container {
-      max-width: 1400px;
+      max-width: 1280px;
       margin: 0 auto;
-      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .nes-container {
-      background: rgba(40, 40, 40, 0.7);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-      margin-bottom: 30px;
-      animation: slideIn 0.5s ease-out;
+      background: rgba(26, 38, 58, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 800px;
+      text-align: center;
     }
 
     .content {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
+      width: 100%;
     }
 
     .title {
@@ -86,503 +88,303 @@
       font-weight: 900;
       font-size: var(--fs);
       letter-spacing: var(--ls);
+      margin: 0;
       color: #fff;
-      padding: 20px 0;
-      text-shadow: 0 3px 15px rgba(255, 87, 34, 0.5);
-      animation: fadeIn 1s ease-out;
-    }
-
-    .tagline {
-      font-size: 1.4rem;
-      font-weight: 300;
-      color: #cccccc;
-      margin-top: -10px;
-      margin-bottom: 20px;
-      animation: fadeIn 1.2s ease-out;
-    }
-
-    .main-logo {
-      display: block;
-      margin: 0 auto;
-      max-width: 200px;
-      height: auto;
-      margin-bottom: 20px;
-      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
-      animation: fadeIn 1.2s ease-out;
-    }
-
-    h2 {
-      color: var(--accent);
-      font-size: 2.2rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 25px;
-      animation: fadeIn 0.9s ease-out;
-    }
-
-    p {
-      font-size: 1.15rem;
-      font-weight: 400;
-      line-height: 1.7;
-      color: #dddddd;
-      animation: fadeIn 1.1s ease-out;
+      padding: 10px 0;
+      text-shadow: 0 2px 10px rgba(79, 155, 255, 0.3);
     }
 
     .nes-btn {
-      background: linear-gradient(135deg, var(--btn-bg), var(--btn-hover));
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border: none;
       border-radius: 12px;
-      color: #ffffff;
-      padding: 14px 24px;
-      font-size: 1.1rem;
+      color: var(--btn-light-text);
+      padding: 12px 20px;
+      font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-      margin: 8px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-    }
-
-    .nes-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(255, 87, 34, 0.4);
-      background: linear-gradient(135deg, var(--btn-hover), var(--btn-bg));
-    }
-
-    .nes-btn:active {
-      transform: translateY(0);
+      gap: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+      margin: 6px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
-    .nes-btn.is-primary {
-      background: linear-gradient(135deg, var(--btn-bg), var(--btn-hover));
+    .nes-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 30px rgba(255, 255, 255, 0.3);
+      filter: brightness(1.2);
     }
+
+    .nes-btn:active {
+      animation: buttonPress 0.2s ease;
+    }
+
+    .nes-btn.is-primary { background: var(--home-btn); }
 
     @keyframes buttonPress {
-      0% { transform: scale(1); box-shadow: 0 10px 30px rgba(255, 87, 34, 0.4); }
-      50% { transform: scale(0.95); box-shadow: 0 4px 15px rgba(255, 87, 34, 0.2); }
-      100% { transform: scale(1); box-shadow: 0 10px 30px rgba(255, 87, 34, 0.4); }
+      0% { transform: scale(1); box-shadow: 0 8px 30px rgba(255, 255, 255, 0.3); }
+      50% { transform: scale(0.97); box-shadow: 0 3px 12px rgba(255, 255, 255, 0.2); }
+      100% { transform: scale(1); box-shadow: 0 8px 30px rgba(255, 255, 255, 0.3); }
     }
 
-    .go-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      margin: 30px 0;
-    }
-
-    .goboard {
-      width: 450px;
-      height: 450px;
+    #game-container {
       display: grid;
-      grid-template: repeat(9, 1fr) / repeat(9, 1fr);
-      border: 3px solid var(--grid-line);
+      grid-template-columns: repeat(3, 150px);
+      grid-gap: 15px;
+      background: rgba(26, 38, 58, 0.65);
+      padding: 15px;
       border-radius: 12px;
-      background: var(--board-bg);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-      position: relative;
-      transition: transform 0.3s ease;
-    }
-
-    .goboard:hover {
-      transform: scale(1.02);
-    }
-
-    .intersection {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+      margin: 20px auto;
       justify-content: center;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 50px);
+      background: rgba(245, 247, 250, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+    }
+
+    .cell {
+      width: 50px;
+      height: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
       cursor: pointer;
-      position: relative;
-      border: 1px solid var(--grid-line);
-      background: var(--board-bg);
-      transition: background 0.2s ease;
+      color: #fff;
+      transition: background 0.3s ease;
     }
 
-    .intersection:hover {
-      background: rgba(255, 87, 34, 0.1);
+    .cell:hover {
+      background: rgba(79, 155, 255, 0.2);
     }
 
-    .stone {
-      width: 90%;
-      height: 90%;
-      border-radius: 50%;
-      position: absolute;
-      z-index: 2;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
-      animation: placeStone 0.3s ease-out;
+    .cell.X { color: #ff4d4d; } /* X Red */
+    .cell.O { color: #2dd4bf; } /* O Teal */
+    .grid.won-X .cell { background: rgba(255, 77, 77, 0.2); }
+    .grid.won-O .cell { background: rgba(45, 212, 191, 0.2); }
+    .grid.active {
+      border: 3px solid var(--clr-1);
+      box-shadow: 0 0 15px var(--clr-1), 0 0 30px var(--clr-1);
+      animation: glow 1.5s ease-in-out infinite alternate;
     }
 
-    .stone.martian {
-      background: linear-gradient(135deg, #ff5722, #d32f2f);
+    @keyframes glow {
+      from { box-shadow: 0 0 10px var(--clr-1), 0 0 20px var(--clr-1); }
+      to { box-shadow: 0 0 20px var(--clr-1), 0 0 40px var(--clr-1); }
     }
 
-    .stone.alien {
-      background: linear-gradient(135deg, #00e676, #00c853);
-    }
-
-    @keyframes placeStone {
-      0% { transform: scale(0); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    .score-board {
-      background: rgba(40, 40, 40, 0.7);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      padding: 25px;
+    #status {
+      background: rgba(26, 38, 58, 0.65);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      padding: 15px;
       text-align: center;
-      width: 350px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease;
-    }
-
-    .score-board:hover {
-      transform: translateY(-5px);
-    }
-
-    .score-board h3 {
-      color: var(--accent);
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-
-    .score-board p {
-      font-size: 1.3rem;
-      font-weight: 500;
-      margin: 12px 0;
-      color: #ffffff;
-    }
-
-    .game-over {
-      position: fixed;
-      top: 0;
-      left: 0;
+      margin: 20px auto;
+      font-size: 1.2rem;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
       width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      animation: fadeIn 0.5s ease-out;
+      max-width: 500px;
     }
 
-    .game-over-content {
-      background: rgba(40, 40, 40, 0.9);
-      border-radius: 16px;
-      padding: 40px;
+    footer {
       text-align: center;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-      animation: slideIn 0.5s ease-out;
-    }
-
-    .game-over-content h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    .game-over-content p {
-      font-size: 1.5rem;
-      margin-bottom: 30px;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideIn {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+      width: 100%;
+      margin-top: 20px;
     }
 
     @media (min-width: 768px) {
-      body { padding: 40px 20px; }
-      .nes-container { padding: 40px; border-radius: 24px; }
-      .goboard { width: 500px; height: 500px; }
-      .intersection { width: 100%; height: 100%; }
-      .stone { width: 90%; height: 90%; }
-      .score-board { width: 400px; }
+      body { padding: 30px 15px; }
+      .nes-container { padding: 30px; border-radius: 18px; }
+      #game-container { grid-template-columns: repeat(3, 180px); }
+      .grid { grid-template-columns: repeat(3, 60px); }
+      .cell { width: 60px; height: 60px; font-size: 32px; }
     }
 
     @media (max-width: 480px) {
-      body { padding: 20px 10px; }
-      .nes-container { padding: 20px; }
-      .main-logo { max-width: 160px; }
-      .title { font-size: clamp(2.2rem, 6vw, 3.5rem); }
-      .tagline { font-size: 1.1rem; }
-      .goboard { width: 300px; height: 300px; }
-      .intersection { width: 100%; height: 100%; }
-      .stone { width: 90%; height: 90%; }
-      .score-board { width: 100%; }
-      .nes-btn { padding: 12px 20px; font-size: 1rem; }
+      .nes-container { padding: 15px; }
+      .title { font-size: clamp(1.5rem, 3vw, 2rem); }
+      #game-container { grid-template-columns: repeat(3, 120px); }
+      .grid { grid-template-columns: repeat(3, 40px); }
+      .cell { width: 40px; height: 40px; font-size: 24px; }
+      #status { font-size: 1rem; }
     }
-
-    .text-center { text-align: center; }
-    .mt-8 { margin-top: 2rem; }
-    header { text-align: center; margin-bottom: 30px; }
-    footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
-    .footer-links { margin-top: 15px; display: flex; justify-content: center; gap: 20px; }
-    .footer-links a { font-size: 1rem; font-weight: 500; }
   </style>
 </head>
 <body>
   <div class="container">
-    <header>
-      <img src="https://i.postimg.cc/cCvYBzLS/ogvk-org-logo.png" alt="Legacy: Martian vs. Alien Logo" class="main-logo">
-      <h1 class="title">Legacy: Martian vs. Alien</h1>
-      <p class="tagline">A strategic battle for Martian supremacy</p>
-    </header>
+    <div class="content">
+      <h1 class="title">Mega Tic-Tac-Toe</h1>
+    </div>
 
     <div class="nes-container">
-      <h2>Legacy: Martian vs. Alien</h2>
-      <p>Place stones anywhere on the board. Capture opponent stones to gain points. The first to 20 points wins, or the game ends when the board is full or one side resigns.</p>
-      
-      <div class="go-container">
-        <div class="goboard" id="goboard"></div>
-        <div class="score-board">
-          <h3>Score</h3>
-          <p>Martian: <span id="martian-score">0</span></p>
-          <p>Alien: <span id="alien-score">0</span></p>
-          <p>Turn: <span id="turn">Martian</span></p>
-        </div>
-      </div>
-
+      <h2>X vs. O</h2>
+      <div id="game-container"></div>
+      <div id="status">X's Turn<br>Choose any grid to start</div>
       <div class="text-center mt-8">
-        <button class="nes-btn is-primary" onclick="resetGame()"><i class="fas fa-redo"></i> New Game</button>
-        <button class="nes-btn is-primary" onclick="resignGame()"><i class="fas fa-flag"></i> Resign</button>
+        <button class="nes-btn is-primary" id="reset"><i class="fas fa-redo"></i> Reset Game</button>
       </div>
     </div>
 
     <footer>
-      <p>© 2025 OGVK Company | All rights reserved</p>
-      <div class="footer-links">
-        <a href="https://ogvk.company" target="_blank">OGVK Home</a>
-        <a href="https://ogvk.company/about" target="_blank">About</a>
-        <a href="https://ogvk.company/contact" target="_blank">Contact</a>
-      </div>
+      <p>© 2025 xAI | All rights reserved</p>
     </footer>
   </div>
 
   <script>
-    const board = document.getElementById('goboard');
-    let currentTurn = 'martian';
-    let scores = { martian: 0, alien: 0 };
-    let stoneCount = 0;
-    const boardSize = 9;
-    const winningScore = 20;
+    const container = document.getElementById('game-container');
+    const status = document.getElementById('status');
+    const resetButton = document.getElementById('reset');
+    let currentPlayer = 'X';
+    let gameActive = true;
+    let activeGrid = null; // Null means any grid is playable
+    const grids = Array(9).fill().map(() => ({
+      cells: Array(9).fill(''),
+      winner: null
+    }));
+    const metaBoard = Array(9).fill(null); // Use null instead of '' for clarity
 
-    let boardState = Array(boardSize).fill().map(() => Array(boardSize).fill(null));
-
-    function initializeBoard() {
-      try {
-        board.innerHTML = '';
-        board.style.visibility = 'visible';
-        
-        for (let row = 0; row < boardSize; row++) {
-          for (let col = 0; col < boardSize; col++) {
-            const intersection = document.createElement('div');
-            intersection.className = 'intersection';
-            intersection.dataset.row = row;
-            intersection.dataset.col = col;
-            
-            intersection.addEventListener('click', handleIntersectionClick);
-            
-            const stone = boardState[row][col];
-            if (stone) {
-              const stoneElement = document.createElement('div');
-              stoneElement.className = `stone ${stone}`;
-              intersection.appendChild(stoneElement);
-            }
-            
-            board.appendChild(intersection);
-          }
+    // Initialize game board
+    function initBoard() {
+      container.innerHTML = '';
+      for (let i = 0; i < 9; i++) {
+        const grid = document.createElement('div');
+        grid.classList.add('grid');
+        grid.dataset.gridIndex = i;
+        for (let j = 0; j < 9; j++) {
+          const cell = document.createElement('div');
+          cell.classList.add('cell');
+          cell.dataset.cellIndex = j;
+          cell.addEventListener('click', () => handleCellClick(i, j));
+          grid.appendChild(cell);
         }
-        updateScoreBoard();
-      } catch (error) {
-        console.error('Error initializing board:', error);
-        board.innerHTML = '<p style="color: red; text-align: center;">Error loading goboard. Please refresh the page.</p>';
+        container.appendChild(grid);
+      }
+      updateActiveGrid();
+      updateStatus();
+    }
+
+    // Check for win in a board
+    function checkWin(board) {
+      const winPatterns = [
+        [0,1,2], [3,4,5], [6,7,8], // Rows
+        [0,3,6], [1,4,7], [2,5,8], // Columns
+        [0,4,8], [2,4,6]           // Diagonals
+      ];
+      return winPatterns.some(pattern => 
+        board[pattern[0]] && 
+        board[pattern[0]] === board[pattern[1]] && 
+        board[pattern[1]] === board[pattern[2]]
+      );
+    }
+
+    // Check if a grid is full (for draw detection)
+    function isGridFull(grid) {
+      return !grid.cells.includes('');
+    }
+
+    // Check if meta board is full (for draw detection)
+    function isMetaBoardFull() {
+      return metaBoard.every(cell => cell !== null);
+    }
+
+    // Handle cell click
+    function handleCellClick(gridIndex, cellIndex) {
+      // Validate move
+      if (!gameActive || 
+          grids[gridIndex].cells[cellIndex] !== '' || 
+          grids[gridIndex].winner || 
+          (activeGrid !== null && activeGrid !== gridIndex)) {
+        return;
+      }
+
+      // Update cell
+      grids[gridIndex].cells[cellIndex] = currentPlayer;
+      const cell = container.children[gridIndex].children[cellIndex];
+      cell.textContent = currentPlayer;
+      cell.classList.add(currentPlayer);
+
+      // Check for grid win
+      if (checkWin(grids[gridIndex].cells)) {
+        grids[gridIndex].winner = currentPlayer;
+        container.children[gridIndex].classList.add(`won-${currentPlayer}`);
+        metaBoard[gridIndex] = currentPlayer;
+      } else if (isGridFull(grids[gridIndex])) {
+        grids[gridIndex].winner = 'Draw';
+        metaBoard[gridIndex] = 'Draw';
+      }
+
+      // Check for game end
+      if (checkWin(metaBoard)) {
+        status.innerHTML = `${currentPlayer} Wins the Game!`;
+        gameActive = false;
+        updateActiveGrid(); // Remove active highlights
+        return;
+      } else if (isMetaBoardFull()) {
+        status.innerHTML = 'Game is a Draw!';
+        gameActive = false;
+        updateActiveGrid();
+        return;
+      }
+
+      // Update game state
+      currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+      activeGrid = grids[cellIndex].winner ? null : cellIndex;
+      updateStatus();
+      updateActiveGrid();
+    }
+
+    // Update active grid highlight
+    function updateActiveGrid() {
+      Array.from(container.children).forEach(grid => grid.classList.remove('active'));
+      if (gameActive && activeGrid !== null && !grids[activeGrid].winner) {
+        container.children[activeGrid].classList.add('active');
       }
     }
 
-    function handleIntersectionClick(e) {
-      try {
-        const intersection = e.currentTarget;
-        const row = parseInt(intersection.dataset.row);
-        const col = parseInt(intersection.dataset.col);
-        
-        if (boardState[row][col] === null) {
-          placeStone(row, col);
-        }
-      } catch (error) {
-        console.error('Error handling intersection click:', error);
+    // Update status message
+    function updateStatus() {
+      if (!gameActive) return;
+      if (activeGrid === null) {
+        status.innerHTML = `${currentPlayer}'s Turn<br>Choose any grid`;
+      } else {
+        const gridNames = [
+          'Top-Left', 'Top-Center', 'Top-Right',
+          'Middle-Left', 'Middle-Center', 'Middle-Right',
+          'Bottom-Left', 'Bottom-Center', 'Bottom-Right'
+        ];
+        status.innerHTML = `${currentPlayer}'s Turn<br>Play in ${gridNames[activeGrid]} grid`;
       }
     }
 
-    function placeStone(row, col) {
-      try {
-        const stone = currentTurn;
-        boardState[row][col] = stone;
-        stoneCount++;
-        
-        checkCaptures(row, col, stone);
-        
-        initializeBoard();
-        currentTurn = currentTurn === 'martian' ? 'alien' : 'martian';
-        updateScoreBoard();
-        
-        checkGameOver();
-      } catch (error) {
-        console.error('Error placing stone:', error);
-      }
-    }
-
-    function checkCaptures(row, col, stone) {
-      const opponent = stone === 'martian' ? 'alien' : 'martian';
-      const directions = [[-1, 0], [1, 0], [0, -1], [0, 1]];
-      
-      for (const [dr, dc] of directions) {
-        const nr = row + dr;
-        const nc = col + dc;
-        if (nr >= 0 && nr < boardSize && nc >= 0 && nc < boardSize && boardState[nr][nc] === opponent) {
-          if (!hasLiberties(nr, nc, opponent)) {
-            captureGroup(nr, nc, opponent);
-          }
-        }
-      }
-    }
-
-    function hasLiberties(row, col, player) {
-      const visited = new Set();
-      const stack = [[row, col]];
-      visited.add(`${row},${col}`);
-      
-      while (stack.length) {
-        const [r, c] = stack.pop();
-        const directions = [[-1, 0], [1, 0], [0, -1], [0, 1]];
-        
-        for (const [dr, dc] of directions) {
-          const nr = r + dr;
-          const nc = c + dc;
-          if (nr >= 0 && nr < boardSize && nc >= 0 && nc < boardSize) {
-            if (boardState[nr][nc] === null) {
-              return true;
-            }
-            if (boardState[nr][nc] === player && !visited.has(`${nr},${nc}`)) {
-              visited.add(`${nr},${nc}`);
-              stack.push([nr, nc]);
-            }
-          }
-        }
-      }
-      return false;
-    }
-
-    function captureGroup(row, col, player) {
-      const visited = new Set();
-      const stack = [[row, col]];
-      const toCapture = [];
-      visited.add(`${row},${col}`);
-      
-      while (stack.length) {
-        const [r, c] = stack.pop();
-        toCapture.push([r, c]);
-        
-        const directions = [[-1, 0], [1, 0], [0, -1], [0, 1]];
-        for (const [dr, dc] of directions) {
-          const nr = r + dr;
-          const nc = c + dc;
-          if (nr >= 0 && nr < boardSize && nc >= 0 && nc < boardSize && boardState[nr][nc] === player && !visited.has(`${nr},${nc}`)) {
-            visited.add(`${nr},${nc}`);
-            stack.push([nr, nc]);
-          }
-        }
-      }
-      
-      for (const [r, c] of toCapture) {
-        boardState[r][c] = null;
-        scores[currentTurn]++;
-        stoneCount--;
-      }
-    }
-
-    function updateScoreBoard() {
-      try {
-        document.getElementById('martian-score').textContent = scores.martian;
-        document.getElementById('alien-score').textContent = scores.alien;
-        document.getElementById('turn').textContent = currentTurn.charAt(0).toUpperCase() + currentTurn.slice(1);
-      } catch (error) {
-        console.error('Error updating scoreboard:', error);
-      }
-    }
-
-    function checkGameOver() {
-      try {
-        if (scores.martian >= winningScore) {
-          showGameOver('Martian');
-        } else if (scores.alien >= winningScore) {
-          showGameOver('Alien');
-        } else if (stoneCount >= boardSize * boardSize) {
-          const winner = scores.martian > scores.alien ? 'Martian' : scores.alien > scores.martian ? 'Alien' : 'Draw';
-          showGameOver(winner);
-        }
-      } catch (error) {
-        console.error('Error checking game over:', error);
-      }
-    }
-
-    function showGameOver(winner) {
-      try {
-        const gameOverDiv = document.createElement('div');
-        gameOverDiv.className = 'game-over';
-        gameOverDiv.innerHTML = `
-          <div class="game-over-content">
-            <h2>Game Over</h2>
-            <p>${winner === 'Draw' ? 'It\'s a Draw!' : `${winner} Wins!`}</p>
-            <button class="nes-btn is-primary" onclick="resetGame()"><i class="fas fa-redo"></i> Play Again</button>
-          </div>
-        `;
-        document.body.appendChild(gameOverDiv);
-      } catch (error) {
-        console.error('Error showing game over:', error);
-      }
-    }
-
+    // Reset game
     function resetGame() {
-      try {
-        boardState = Array(boardSize).fill().map(() => Array(boardSize).fill(null));
-        currentTurn = 'martian';
-        scores = { martian: 0, alien: 0 };
-        stoneCount = 0;
-        initializeBoard();
-        const gameOverDiv = document.querySelector('.game-over');
-        if (gameOverDiv) gameOverDiv.remove();
-      } catch (error) {
-        console.error('Error resetting game:', error);
-      }
+      grids.forEach(grid => {
+        grid.cells.fill('');
+        grid.winner = null;
+      });
+      metaBoard.fill(null);
+      currentPlayer = Math.random() < 0.5 ? 'X' : 'O';
+      gameActive = true;
+      activeGrid = null;
+      initBoard();
     }
 
-    function resignGame() {
-      try {
-        const winner = currentTurn === 'martian' ? 'Alien' : 'Martian';
-        showGameOver(winner);
-      } catch (error) {
-        console.error('Error resigning game:', error);
-      }
-    }
+    // Event listeners
+    resetButton.addEventListener('click', resetGame);
 
-    document.addEventListener('DOMContentLoaded', () => {
-      initializeBoard();
-    });
+    // Start game
+    initBoard();
   </script>
 </body>
 </html>
